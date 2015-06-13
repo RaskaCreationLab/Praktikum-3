@@ -3,23 +3,35 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/admin_value/classes/Name.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/interfaces/Length.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/interfaces/Acc.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/classes/LengthImpl.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/interfaces/AbstractValue.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/classes/AccImpl.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value3d/classes/AbstractValue3dImpl.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/classes/ForceImpl.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/admin_value/classes/UniqueId.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/interfaces/Force.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/phsycis_value3d/interfaces/AbstractValue3d.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/classes/Values.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value3d/classes/BoundingBoxImpl.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/classes/AbstractValueImpl.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/physics_value/classes/PowerImpl.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/phsycis_value3d/interfaces/BoundingBox.java</file>
-            <file>file:/C:/Users/Zujiry/Desktop/PraktikumProg/Praktikum2.1FINAL/src/simulation/adt/admin_value/classes/StowageLocation.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/Bounded3DimStack.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/ContainerStowage.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/interfaces/Name.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/classes/StowageLocationImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/Pallet.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/classes/Admin_Values.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/PalletImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/marker/interfaces/PhysicsValue.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/physics_value3d/classes/BoundingBoxImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/ContainerStowageImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/physics_value/interfaces/AbstractValue.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/util/Utility.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/phsyics_value3d/interfaces/BoundingBox.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/classes/NameImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/classes/UniqueIdImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/WithStowLoc.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/interfaces/StowageLocation.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/NullLocationImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/NullPallet.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/NullContainer.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/physics_value3d/classes/Values3D.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/Stowage.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/marker/interfaces/AdminValue.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/ContainerImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/interfaces/UniqueId.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/physics_value/classes/Values.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/marker/interfaces/Value.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/WithUniqueId.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/Container.java</file>
         </group>
     </open-files>
 </project-private>

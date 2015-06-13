@@ -12,14 +12,18 @@ import simulation.adt.admin_value.interfaces.UniqueId;
  * @author Zujiry
  */
 public class UniqueIdImpl implements UniqueId{
+    
     long idNumber;
+    static long currentId = 0;
     
     private UniqueIdImpl(long idNumber) {
         this.idNumber = idNumber;
     }
     
-    public static UniqueIdImpl valueOf(long idNumber) {
-        return new UniqueIdImpl(idNumber);
+    public static UniqueIdImpl valueOf() {
+        UniqueIdImpl id = new UniqueIdImpl(currentId);
+        currentId++;
+        return id;
     }
     
     @Override

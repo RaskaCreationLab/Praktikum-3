@@ -8,6 +8,7 @@ package simulation.interfaces.classes;
 import java.util.Collection;
 import java.util.Set;
 import simulation.adt.admin_value.interfaces.StowageLocation;
+import simulation.adt.physics_value.classes.Values;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.interfaces.Container;
 import simulation.interfaces.Pallet;
@@ -20,22 +21,22 @@ public class NullContainer implements Container{
 
     @Override
     public Mass emptyMass() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Values.mass(0.0);
     }
 
     @Override
     public Mass maxMass() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Values.mass(0.0);
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
     public boolean isFull() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override

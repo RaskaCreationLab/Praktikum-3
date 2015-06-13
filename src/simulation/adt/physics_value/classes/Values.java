@@ -172,8 +172,8 @@ public final class Values {
     }
     //</editor-fold>
     //<editor-fold desc="UniqueId">
-    public static UniqueId uniqueID(long id) {
-        return UniqueIdImpl.valueOf(id);
+    public static UniqueId uniqueID() {
+        return UniqueIdImpl.valueOf();
     }
     //</editor-fold>
     //<editor-fold desc="StowageLocation">

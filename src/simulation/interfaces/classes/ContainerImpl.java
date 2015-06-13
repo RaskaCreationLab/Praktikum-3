@@ -23,12 +23,28 @@ public class ContainerImpl implements Container{
         
     StowageLocation loc;
     ArrayList<ArrayList<ArrayList<Pallet>>> stack;
-    final int groeseBay;
-    final int groeseRow;
-    final int groeseTier;
+    final int groesseLaenge;
+    final int groesseBreite;
+    final int groesseHoehe;
     
-    private ContainerImpl(StowageLocation loc) {
+    private ContainerImpl(StowageLocation loc, int laenge, int breite, int hoehe) {
         this.loc = loc;
+        
+        this.groesseLaenge  = laenge;
+        this.groesseBreite  = breite;
+        this.groesseHoehe = hoehe;
+        
+        this.stack = new ArrayList<>();
+        
+        for(int i = 0; i != groesseLaenge; i++) {
+            this.stack.add(new ArrayList<>());
+                for(int j = 0; j != groesseBreite; j++) {
+                    this.stack.get(i).add(new ArrayList<>());
+                        for(int k = 0; k != groesseHoehe; k++) {
+                            this.stack.get(i).get(j).add(new NullPallet());
+                        }
+                }
+        }
     }
 
     @Override
