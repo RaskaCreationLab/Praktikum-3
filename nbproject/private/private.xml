@@ -3,35 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/Bounded3DimStack.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/ContainerStowage.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/interfaces/Name.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/classes/StowageLocationImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/Pallet.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/classes/Admin_Values.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/PalletImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/marker/interfaces/PhysicsValue.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/physics_value3d/classes/BoundingBoxImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/ContainerStowageImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/physics_value/interfaces/AbstractValue.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/util/Utility.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/phsyics_value3d/interfaces/BoundingBox.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/classes/NameImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/classes/UniqueIdImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/WithStowLoc.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/interfaces/StowageLocation.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/NullLocationImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/NullPallet.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/NullContainer.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/physics_value3d/classes/Values3D.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/Stowage.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/marker/interfaces/AdminValue.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/classes/ContainerImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/admin_value/interfaces/UniqueId.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/adt/physics_value/classes/Values.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/marker/interfaces/Value.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/WithUniqueId.java</file>
-            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/interfaces/Container.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/stowage/classes/ContainerImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/stowage/interfaces/ContainerStowage.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/stowage/classes/NullPallet.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/stowage/classes/PalletImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/stowage/classes/Bounded3DimStackImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/stowage/classes/NullContainer.java</file>
+            <file>file:/D:/Projekte/GitHub/B-AI2-Java/Praktikum3.0FINAL/src/simulation/stowage/classes/ContainerStowageImpl.java</file>
         </group>
     </open-files>
 </project-private>

@@ -12,6 +12,7 @@ import simulation.adt.admin_value.classes.AdminValues;
 import simulation.adt.admin_value.classes.StowageLocationImpl;
 import simulation.adt.admin_value.interfaces.StowageLocation;
 import simulation.adt.admin_value.interfaces.UniqueId;
+import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.classes.Values;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.stowage.interfaces.Bounded3DimStack;
@@ -49,6 +50,14 @@ public class ContainerImpl implements Container{
     @Override
     public Mass maxMass() {
         return Values.massInKG(24000.0);
+    }
+    
+    public Mass mass() {
+        Mass mass = emptyMass();
+        for(Pallet p : getAll()) {
+            mass = mass.add(p.mass());
+        }
+        return mass;
     }
 
     @Override
@@ -144,7 +153,16 @@ public class ContainerImpl implements Container{
 
     @Override
     public int compareTo(Container t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.mass() > t.mass())
+            return 1;
+        else if (this.mass() == t.mass())
+            return 0;
+        else
+            return -1;
+    }
+    
+    public BoundingBox boundingBox() {
+        return Values.CONTAINER20FT_BOUNDING_BOX;
     }
 
 }

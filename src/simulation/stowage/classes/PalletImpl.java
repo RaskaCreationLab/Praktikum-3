@@ -72,7 +72,12 @@ public class PalletImpl implements Pallet {
 
     @Override
     public int compareTo(Pallet t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.mass() > t.mass())
+            return 1;
+        else if (this.mass() == t.mass())
+            return 0;
+        else
+            return -1;
     }
 
     @Override

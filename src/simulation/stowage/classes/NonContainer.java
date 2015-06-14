@@ -10,6 +10,7 @@ import java.util.Set;
 import simulation.adt.admin_value.classes.AdminValues;
 import simulation.adt.admin_value.interfaces.StowageLocation;
 import simulation.adt.admin_value.interfaces.UniqueId;
+import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.classes.Values;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.stowage.interfaces.Container;
@@ -138,5 +139,13 @@ public class NonContainer implements Container{
     @Override
     public void setLoc(Stowage stowage, StowageLocation loc) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public BoundingBox boundingBox() {
+        return Values.NULL_BOUNDING_BOX;
+    }
+    
+    public Mass mass() {
+        return Values.ZERO_MASS;
     }
 }
