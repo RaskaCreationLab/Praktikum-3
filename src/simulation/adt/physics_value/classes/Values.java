@@ -7,10 +7,12 @@ package simulation.adt.physics_value.classes;
 
 import simulation.adt.admin_value.interfaces.Name;
 import simulation.adt.admin_value.classes.NameImpl;
+import simulation.adt.admin_value.classes.NullLocationImpl;
 import simulation.adt.admin_value.classes.StowageLocationImpl;
 import simulation.adt.admin_value.classes.UniqueIdImpl;
 import simulation.adt.admin_value.interfaces.StowageLocation;
 import simulation.adt.admin_value.interfaces.UniqueId;
+import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.interfaces.Work;
 import simulation.adt.physics_value.interfaces.TimeDiff;
 import simulation.adt.physics_value.interfaces.Power;
@@ -19,6 +21,7 @@ import simulation.adt.physics_value.interfaces.Acc;
 import simulation.adt.physics_value.interfaces.Speed;
 import simulation.adt.physics_value.interfaces.Length;
 import simulation.adt.physics_value.interfaces.Mass;
+import simulation.adt.physics_value3d.classes.BoundingBoxImpl;
 import simulation.adt.units.MassUnit;
 
 public final class Values {
@@ -38,6 +41,10 @@ public final class Values {
     public static final Power ZERO_POWER = power(0.0);
     public static final Acc ZERO_ACC = acc(0.0);
     public static final Work ZERO_WORK = work(0.0);
+    
+    public static final BoundingBox PALLET_BOUNDING_BOX = palletBoundingBox();
+    public static final BoundingBox CONTAINER20FT_BOUNDING_BOX = containerBoundingBox();
+    public static final BoundingBox NULL_BOUNDING_BOX = nullBoundingBox();
     
     private Values() {}
     
@@ -166,19 +173,21 @@ public final class Values {
         return PowerImpl.valueOf(value * KILO);
     }
     //</editor-fold>
-    //<editor-fold desc="Name">
-    public static Name name(String name) {
-        return NameImpl.valueOf(name);
+    //<editor-fold desc="BoundingBox - length, width, height">
+    public static BoundingBox boundingBox(Length length, Length width, Length height) {
+        return BoundingBoxImpl.valueOf(length, width, height);
     }
-    //</editor-fold>
-    //<editor-fold desc="UniqueId">
-    public static UniqueId uniqueID() {
-        return UniqueIdImpl.valueOf();
+    
+    public static BoundingBox palletBoundingBox() {
+        return boundingBox(length(1.0), length(1.2), length(1.0));
     }
-    //</editor-fold>
-    //<editor-fold desc="StowageLocation">
-    public static StowageLocation stowageLocation(int length, int height, int depth, boolean isNull) {
-        return StowageLocationImpl.valueOf(length, height, depth, isNull);
+    
+    public static BoundingBox containerBoundingBox() {
+        return boundingBox(lengthInFt(20.0), lengthInFt(8.0), lengthInFt(8.0));
+    }
+    
+    public static BoundingBox nullBoundingBox() {
+        return boundingBox(length(0.0), length(0.0), length(0.0));
     }
     //</editor-fold>
 }

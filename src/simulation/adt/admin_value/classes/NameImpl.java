@@ -8,7 +8,7 @@ package simulation.adt.admin_value.classes;
 import simulation.adt.admin_value.interfaces.Name;
 
 public class NameImpl implements Name{
-    String name;
+    final String name;
     
     private NameImpl(String name) {
         this.name = name;

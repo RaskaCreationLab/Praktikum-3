@@ -13,7 +13,7 @@ import simulation.adt.admin_value.interfaces.UniqueId;
  */
 public class UniqueIdImpl implements UniqueId{
     
-    long idNumber;
+    final long idNumber;
     static long currentId = 0;
     
     private UniqueIdImpl(long idNumber) {

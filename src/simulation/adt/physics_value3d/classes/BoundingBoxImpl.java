@@ -23,16 +23,18 @@ public class BoundingBoxImpl implements BoundingBox{
         return new BoundingBoxImpl(width,height,length);
     }
 
-    //Getter
-    public Length getWidth() {
+    @Override
+    public Length width() {
         return width;
     }
 
-    public Length getHeight() {
+    @Override
+    public Length height() {
         return height;
     }
 
-    public Length getLength() {
+    @Override
+    public Length length() {
         return length;
     }
     
@@ -41,16 +43,18 @@ public class BoundingBoxImpl implements BoundingBox{
          return other instanceof BoundingBox;
     }
     
-    public boolean fitsInto(BoundingBoxImpl other) {
-        if(width.value()  < other.getWidth().value() &&
-           height.value() < other.getHeight().value()&& 
-           length.value() < other.getLength().value()) {
+    @Override
+    public boolean fitsInto(BoundingBox other) {
+        if(width.value()  < other.width().value() &&
+           height.value() < other.height().value()&& 
+           length.value() < other.length().value()) {
            return true;
         }
         return false;
     }
 
     //Hash&Equal
+    @Override
     public int hashCode() {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.width);
@@ -81,12 +85,13 @@ public class BoundingBoxImpl implements BoundingBox{
     }
         
     //toString
+    @Override
     public String toString() {
         return toString_EU();
     }
    
     public String toString_EU() {
-        String text = (this.width.mul(this.height.value() * this.length.value())) + "m²";
+        String text = this.length.value()+"m "+this.width.value()+"m "+this.height.value()+"m" ;
         return text;
     }
 }
