@@ -39,7 +39,7 @@ public class NullPallet implements Pallet {
     }
 
     @Override
-    public UniqueId getId() {
+    public UniqueId id() {
         return id;
     }
     

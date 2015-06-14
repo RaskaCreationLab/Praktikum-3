@@ -5,12 +5,13 @@
  */
 package simulation.stowage.interfaces;
 
+import simulation.entities.component_interfaces.Body;
 import simulation.marker.interfaces.Mutable;
 
 /**
  *
  * @author Zujiry
  */
-public interface Stowage<E> extends Mutable, /*Body,*/ WithCargo, Bounded3DimStack<E>{
+public interface Stowage<E> extends Mutable, Body, WithCargo, Bounded3DimStack<E>{
     
 }

@@ -72,16 +72,11 @@ public class PalletImpl implements Pallet {
 
     @Override
     public int compareTo(Pallet t) {
-        if (this.mass() > t.mass())
-            return 1;
-        else if (this.mass() == t.mass())
-            return 0;
-        else
-            return -1;
+        return this.mass().compareTo(t.mass());
     }
 
     @Override
-    public UniqueId getId() {
+    public UniqueId id() {
         return id;
     }
     

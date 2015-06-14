@@ -5,11 +5,9 @@
  */
 package simulation.stowage.classes;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 import simulation.adt.admin_value.classes.AdminValues;
-import simulation.adt.admin_value.classes.StowageLocationImpl;
 import simulation.adt.admin_value.interfaces.StowageLocation;
 import simulation.adt.admin_value.interfaces.UniqueId;
 import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
@@ -153,16 +151,16 @@ public class ContainerImpl implements Container{
 
     @Override
     public int compareTo(Container t) {
-        if (this.mass() > t.mass())
-            return 1;
-        else if (this.mass() == t.mass())
-            return 0;
-        else
-            return -1;
+        return this.mass().compareTo(t.mass());
     }
     
     public BoundingBox boundingBox() {
         return Values.CONTAINER20FT_BOUNDING_BOX;
+    }
+
+    @Override
+    public UniqueId id() {
+        return id;
     }
 
 }

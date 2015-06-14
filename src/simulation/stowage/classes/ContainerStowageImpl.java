@@ -103,6 +103,7 @@ public class ContainerStowageImpl implements ContainerStowage{
         return elem.loc();
     }   
     
+    @Override
     public BoundingBox boundingBox() {
         return boundingBox;
     }

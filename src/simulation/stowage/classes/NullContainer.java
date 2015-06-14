@@ -147,4 +147,9 @@ public class NullContainer implements Container{
     public Mass mass() {
         return Values.ZERO_MASS;
     }
+
+    @Override
+    public UniqueId id() {
+        return id;
+    }
 }
