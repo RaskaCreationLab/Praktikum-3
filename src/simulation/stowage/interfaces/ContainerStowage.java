@@ -5,10 +5,6 @@
  */
 package simulation.stowage.interfaces;
 
-/**
- *
- * @author Zujiry
- */
 public interface ContainerStowage extends Stowage<Container>{
     
 }

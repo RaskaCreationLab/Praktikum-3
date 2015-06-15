@@ -50,6 +50,7 @@ public class ContainerImpl implements Container{
         return Values.massInKG(24000.0);
     }
     
+    @Override
     public Mass mass() {
         Mass mass = emptyMass();
         for(Pallet p : getAll()) {

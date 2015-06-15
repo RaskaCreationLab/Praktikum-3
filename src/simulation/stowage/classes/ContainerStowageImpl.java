@@ -23,6 +23,10 @@ public class ContainerStowageImpl implements ContainerStowage{
         this.boundingBox = boundingBox;
         stowage = Bounded3DimStackImpl.valueOf(Container.class, bays, rows, tiers);
     }
+    
+    public static ContainerStowage valueOf(int bays, int rows, int tiers, BoundingBox boundingBox) {
+        return new ContainerStowageImpl(bays, rows, tiers, boundingBox);
+    }
        
     @Override
     public Mass emptyMass() {
