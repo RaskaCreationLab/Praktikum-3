@@ -60,10 +60,10 @@ public class Bounded3DimStackImpl<E extends WithForm> implements Bounded3DimStac
     private E getNullObject(Class<E> kindOfObjects) throws InvalidClassException {
         if (kindOfObjects.equals(Container.class) ||
             kindOfObjects.isInstance(Container.class))
-            return (E)Entities.NULL_CONTAINER;
+            return (E)StowageEntities.NULL_CONTAINER;
         else if (kindOfObjects.equals(Pallet.class) ||
             kindOfObjects.isInstance(Pallet.class))
-            return (E)Entities.NULL_PALLET;
+            return (E)StowageEntities.NULL_PALLET;
         throw new InvalidClassException("Unknown Type!");
     }
    

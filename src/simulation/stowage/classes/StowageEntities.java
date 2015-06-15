@@ -15,9 +15,9 @@ import simulation.stowage.interfaces.Pallet;
  *
  * @author Ralf
  */
-public class Entities {
+public class StowageEntities {
     
-    private Entities(){
+    private StowageEntities(){
         
     }
     

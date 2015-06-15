@@ -18,8 +18,12 @@ public class ContainerStowageImpl implements ContainerStowage{
     
     Bounded3DimStackImpl stowage;
     BoundingBox boundingBox;
+    final int bays, rows, tiers;
     
     private ContainerStowageImpl(int bays, int rows, int tiers, BoundingBox boundingBox) {
+        this.bays = bays;
+        this.rows = rows;
+        this.tiers = tiers;
         this.boundingBox = boundingBox;
         stowage = Bounded3DimStackImpl.valueOf(Container.class, bays, rows, tiers);
     }
@@ -30,14 +34,15 @@ public class ContainerStowageImpl implements ContainerStowage{
        
     @Override
     public Mass emptyMass() {
-        return Values.massInKG(2280.0);
+        return Values.ZERO_MASS;
     }
 
     @Override
     public Mass maxMass() {
-        return Values.massInKG(24000.0);
+        return Values.FULL_CONTAINER.mul(bays * rows * tiers);
     }
     
+    @Override
     public Mass mass() {
         Mass mass = emptyMass();
         for(Container c : getAll()) {

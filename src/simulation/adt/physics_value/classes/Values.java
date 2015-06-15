@@ -45,6 +45,8 @@ public final class Values {
     public static final BoundingBox PALLET_BOUNDING_BOX = palletBoundingBox();
     public static final BoundingBox CONTAINER20FT_BOUNDING_BOX = containerBoundingBox();
     public static final BoundingBox NULL_BOUNDING_BOX = nullBoundingBox();
+    public static final Mass EMPTY_CONTAINER = mass(2280.0);
+    public static final Mass FULL_CONTAINER = mass(24000.0);
     
     private Values() {}
     
