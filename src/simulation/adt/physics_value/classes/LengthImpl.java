@@ -1,6 +1,5 @@
 package simulation.adt.physics_value.classes;
 
-import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.interfaces.Length;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.adt.physics_value.interfaces.Work;
@@ -28,11 +27,6 @@ class LengthImpl extends AbstractValueImpl<Length> implements Length{
          return other instanceof Length;
     }
     
-    @Override
-    public Length add(Length other) {
-        return LengthImpl.valueOf(other.value() + this.value());
-    }
-    
     public Work mul(Force other) {
         return WorkImpl.valueOf(other.value() * this.value());
     }
@@ -47,14 +41,10 @@ class LengthImpl extends AbstractValueImpl<Length> implements Length{
         return LengthImpl.valueOf(this.value() / other);
     }   
     
+    @Override
     public Speed div(TimeDiff other) {
         return SpeedImpl.valueOf(this.value / other.value());
     }
-    
-    @Override
-    public Length sub(Length other) {
-        return this.add(LengthImpl.valueOf(-other.value()));
-    }     
     
     @Override
     public String toString() {

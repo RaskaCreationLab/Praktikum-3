@@ -25,11 +25,6 @@ class WorkImpl extends AbstractValueImpl<Work> implements Work{
     }
     
     @Override
-    public Work add(Work other) {
-        return WorkImpl.valueOf(other.value() + this.value());
-    }
-
-    @Override
     public Work mul(double other) {
         return WorkImpl.valueOf(other * this.value());
     }
@@ -46,11 +41,6 @@ class WorkImpl extends AbstractValueImpl<Work> implements Work{
     public Work div(double other) {
         return WorkImpl.valueOf(this.value() / other);
     }   
-    
-    @Override
-    public Work sub(Work other) {
-        return this.add(WorkImpl.valueOf(-other.value()));
-    } 
     
     @Override
     public String toString() {

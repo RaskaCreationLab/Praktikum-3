@@ -24,8 +24,8 @@ public class Engine extends JGEngine {
     
     public static void startGame() {
         getInstance().loadSprites();
-        Ground.generateGround();
         GameObject.getGameObject(Car.porsche());
+        Ground.generateGround();
     }
         
     private Engine(int width, int heigth) {

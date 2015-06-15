@@ -3,6 +3,8 @@ package simulation.adt.physics_value.classes;
 import simulation.adt.physics_value.interfaces.Acc;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.adt.physics_value.interfaces.Force;
+import simulation.adt.physics_value.interfaces.Speed;
+import simulation.adt.physics_value.interfaces.TimeDiff;
 
 public class AccImpl extends AbstractValueImpl<Acc> implements Acc{
 
@@ -25,30 +27,29 @@ public class AccImpl extends AbstractValueImpl<Acc> implements Acc{
     }
     
     @Override
-    public Acc add(Acc other) {
-        return AccImpl.valueOf(other.value() + this.value());
-    }
-
     public Acc mul(double other) {
         return AccImpl.valueOf(other * this.value());
     }
+    
+    @Override
+    public Speed mul(TimeDiff other) {
+        return SpeedImpl.valueOf(other.value() * this.value());
+    }
 
+    @Override
     public Acc div(double other) {
-        return AccImpl.valueOf(other / this.value());
+        return AccImpl.valueOf(this.value() / other);
     }   
     
+    @Override
     public Mass div(Force other) {
         return MassImpl.valueOf(this.value() / other.value());
     }
     
+    @Override
     public Force div(Mass other) {
         return ForceImpl.valueOf(this.value() / other.value());
     }
-    
-    @Override
-    public Acc sub(Acc other) {
-        return this.add(AccImpl.valueOf(-other.value()));
-    } 
     
     @Override
     public String toString() {

@@ -23,11 +23,6 @@ class TimeDiffImpl extends AbstractValueImpl<TimeDiff> implements TimeDiff{
     }
     
     @Override
-    public TimeDiff add(TimeDiff other) {
-        return TimeDiffImpl.valueOf(other.value() + this.value());
-    }
-
-    @Override
     public TimeDiff mul(double other) {
         return TimeDiffImpl.valueOf(other * this.value());
     }
@@ -36,11 +31,6 @@ class TimeDiffImpl extends AbstractValueImpl<TimeDiff> implements TimeDiff{
     public TimeDiff div(double other) {
         return TimeDiffImpl.valueOf(this.value() / other);
     }   
-    
-    @Override
-    public TimeDiff sub(TimeDiff other) {
-        return this.add(TimeDiffImpl.valueOf(-other.value()));
-    } 
     
     @Override
     public String toString() {

@@ -1,11 +1,15 @@
 package simulation.adt.physics_value.interfaces;
 
-import simulation.marker.interfaces.PhysicsValue;
-
-public interface AbstractValue<E extends AbstractValue> extends Comparable<E>, PhysicsValue {
+public interface AbstractValue<E extends AbstractValue> extends Comparable<E> {
     //Mathematical standardoperations
-    public E add(E other);
-    public E sub(E other);  
+    default public E add(E other) {
+        return fromPrototype(this.value() + other.value());
+    }
+    
+    default public E sub(E other) {
+        return fromPrototype(this.value() - other.value());
+    }
+    
     public E mul(double d);
     public E div(double d);
     

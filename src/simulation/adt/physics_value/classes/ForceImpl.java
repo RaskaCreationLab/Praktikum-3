@@ -28,11 +28,6 @@ public class ForceImpl extends AbstractValueImpl<Force> implements Force{
     }
     
     @Override
-    public Force add(Force other) {
-        return ForceImpl.valueOf(other.value() + this.value());
-    }
-
-    @Override
     public Force mul(double other) {
         return ForceImpl.valueOf(other * this.value());
     }
@@ -50,11 +45,6 @@ public class ForceImpl extends AbstractValueImpl<Force> implements Force{
     public Acc div(Mass other) {
        return AccImpl.valueOf(this.value() / other.value());
     }
-    
-    @Override
-    public Force sub(Force other) {
-        return this.add(ForceImpl.valueOf(-other.value()));
-    }  
     
     @Override
     public String toString() {

@@ -10,6 +10,7 @@ package simulation;
 import jgame.JGColor;
 import jgame.JGFont;
 import jgame.JGObject;
+import simulation.adt.physics_value.classes.Values;
 import simulation.controls.*;
 import simulation.ground.Ground;
 import static simulation.util.Utility.*;
@@ -67,14 +68,14 @@ public class GameObject extends JGObject {
         brakePedal = new ContinuousControl("brake pedal", 0.0, 1.0, 0.5, Engine.KeyDown, null, true);
         absSwitch = new SwitchControl("ABS", Engine.KeyCtrl);
         asrSwitch = new SwitchControl("ASR", Engine.KeyShift);
-        steeringWheel = new ContinuousControl("steering Wheel", -1.0, 1.0, 1.0, Engine.KeyRight, Engine.KeyLeft, false);
+        steeringWheel = new ContinuousControl("steering Wheel", -1.0, 1.0, 2.0, Engine.KeyRight, Engine.KeyLeft, false);
     }
 
     @Override
     public void move() {
-        getParticle().step(getEngine().getDeltaTime());
-        this.x = getParticle().getPosX();
-        this.y = getParticle().getPosY();
+        getParticle().step(Values.timeDiff(getEngine().getDeltaTime()));
+        this.x = getParticle().getPosX().value();
+        this.y = getParticle().getPosY().value();
         setGraphic("Player" + "0");
         // evaluate new control-levels, etc
         getGasPedal().step(getEngine().getDeltaTime());
@@ -97,7 +98,7 @@ public class GameObject extends JGObject {
     @Override
     public void paint(){
         Engine.getInstance().setColor(JGColor.black);
-        Engine.getInstance().drawString("Speed: " + useValueFormat(getParticle().getSpeed() * 3.6) + " km/h" , 10, 10, -1, new JGFont("Arial", 0, 16), JGColor.white);
+        Engine.getInstance().drawString("Speed: " + useValueFormat(getParticle().getSpeed().value() * 3.6) + " km/h" , 10, 10, -1, new JGFont("Arial", 0, 16), JGColor.white);
         Engine.getInstance().drawString(gasPedal.toString() + usePercentFormat(getParticle().getPropLevel()), 10, 26, -1, new JGFont("Arial", 0, 16), JGColor.white);
         Engine.getInstance().drawString(brakePedal.toString() + usePercentFormat(getParticle().getBrakeLevel()), 10, 42, -1, new JGFont("Arial", 0, 16), JGColor.white);
         Engine.getInstance().drawString(steeringWheel.toString() + usePercentFormat(getParticle().getSteeringLevel()), 10, 58, -1, new JGFont("Arial", 0, 16), JGColor.white);
@@ -107,6 +108,6 @@ public class GameObject extends JGObject {
         
         Engine.getInstance().drawString("is out of Control: " + getParticle().getLostControl(), 10, 122, -1, new JGFont("Arial", 0, 16), JGColor.white);
         Engine.getInstance().drawString("X: " + getParticle().getPosX() + ", Y: " + getParticle().getPosY(), 10, 150, -1, new JGFont("Arial", 0, 16), JGColor.white);
-        Engine.getInstance().drawString("Richtung: " + getParticle().getDirection(), 10, 170, -1, new JGFont("Arial", 0, 16), JGColor.white);
+        Engine.getInstance().drawString("Richtung: " + getParticle().getDirection().value(), 10, 170, -1, new JGFont("Arial", 0, 16), JGColor.white);
     }  
 }

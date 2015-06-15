@@ -4,43 +4,39 @@ package simulation;
 import java.text.*;
 import jgame.*;
 import jgame.platform.*;
+import simulation.adt.physics_value.classes.Values;
+import simulation.adt.physics_value.interfaces.*;
 
 
 public class Car implements ParticleInterface {
-    
-    private enum DriveStates {Stopp, Drive, DriveCurve, LostControl}
-    
+
     //car-spezific constants
-    private final double mass;         // [kg]
-    private final double powerPropMax; // [W] = [kg * m² / s³]
-    private final double speedMax;     // [m/s]
-    private final double dragConst;    // [kg*m / s²]
-    private final double forcePropMax; // [kg*m / s²]
-    private final double curveRadiusMin; // [m]
-    
+    private final Mass mass;         // [kg]
+    private final Power powerPropMax; // [W] = [kg * m² / s³]
+    private final Speed speedMax;     // [m/s]
+    private final Force forcePropMax; // [kg*m / s²]
+    private final Length curveRadiusMin; // [m]
     
     private final double ACTIVATION_LEVEL = 0.01;
-    private final double DRIVE_MIN_SPEED = 0.01; // [m/2]
+    private final Speed DRIVE_MIN_SPEED = Values.speedInMS(0.01); // [m/2]
     
     //physical constants
-    private static final double ACC_EARTH = 9.81; // [m/s²]
-    private static final double MS_IN_KMH = 3.6; 
-    private static final double KILO = 1000; // [X] * this -> [kX]
+    private static final Acc ACC_EARTH = Values.accInMS2(9.81); // [m/s²]
+//    private static final double MS_IN_KMH = 3.6; 
+//    private static final double KILO = 1000; // [X] * this -> [kX]
      
     //properties of car
     private double propLevel; // position of gaslevel in [%] (0.00 - 1.00)
     private double brakeLevel; // position of brakelevel in [%] (0.00 - 1.00)
-    private double posX = 0.0; // [m] relative to start
-    private double posY = 0.0; // [m] relative to start
-    private double time; // [s]
-    private double speed; // [m/s]
+    private Length posX = Values.ZERO_LENGTH; // [m] relative to start
+    private Length posY = Values.ZERO_LENGTH; // [m] relative to start
+    private TimeDiff time; // [s]
+    private Speed speed; // [m/s]
     private double traction; // %
     private boolean abs; // on/off
     private boolean asr; // on/off
     private double steeringLevel; // +-%
-    private double direction; // [rad]
-    
-    private DriveStates currentState;
+    private Angle direction; // [rad]
     
     private boolean lostControl; // yes/no
     
@@ -61,21 +57,26 @@ public class Car implements ParticleInterface {
     }
     
     @Override
-    public double getPosX() {
+    public Length getPosX() {
         return posX;
     }
     
     @Override
-    public double getPosY() {
+    public Length getPosY() {
         return posY;
     }
     
-    public double getTime() {
+    @Override
+    public Angle getDirection() {
+        return direction;
+    }
+    
+    public TimeDiff getTime() {
         return time;
     }
     
     @Override
-    public double getSpeed() {
+    public Speed getSpeed() {
         return speed;
     }
     
@@ -99,31 +100,27 @@ public class Car implements ParticleInterface {
         return lostControl;
     }
     
-    private double getAccEarth() {
-        return Car.ACC_EARTH;
-    }
-    
-    public double getDirection() {
-        return direction;
+    private Acc getAccEarth() {
+        return ACC_EARTH;
     }
     //</editor-fold>
     
     //<editor-fold desc="setter">
-    public void setPosY(double posY) {
+    public void setPosY(Length posY) {
         this.posY = posY;
     }
     
-    public void setPosX(double posX) {
+    public void setPosX(Length posX) {
         this.posX = posX;
     }
     
-    public void setTime(double time) {
+    public void setTime(TimeDiff time) {
         this.time = time;
     }
     
     @Override
     public void setPropLevel(double proplevel) {
-        this.propLevel = proplevel; 
+        this.propLevel = proplevel;               
     }
     
     @Override
@@ -136,9 +133,9 @@ public class Car implements ParticleInterface {
         this.steeringLevel = newSteeringLevel;
     }
     
-    public void setSpeed(double speed) {
-        if (speed <= 0.0)
-            this.speed = 0.0;
+    public void setSpeed(Speed speed) {
+        if (speed.value() <= 0.0)
+            this.speed = Values.ZERO_SPEED;
         else
             this.speed = speed;
     }
@@ -165,30 +162,28 @@ public class Car implements ParticleInterface {
     //</editor-fold>
     
     //Constructor and Setup functions
-    public Car(double mass_kg, double powerPropMax_kw, double speedMax_kmh, double curveRadiusMin_m) {
+    public Car(Mass mass_kg, Power powerPropMax_kw, Speed speedMax_kmh, Length curveRadiusMin_m) {
         //checkpre?
         this.mass = mass_kg;
-        this.powerPropMax = powerPropMax_kw * KILO;
-        this.speedMax = (speedMax_kmh / MS_IN_KMH);
+        this.powerPropMax = powerPropMax_kw;
+        this.speedMax = speedMax_kmh;
         this.curveRadiusMin = curveRadiusMin_m;
-        this.forcePropMax = mass * ACC_EARTH;
-        this.dragConst = Math.abs(powerPropMax / Math.pow(speedMax, 3));
-        this.currentState = DriveStates.Stopp;
+        this.forcePropMax = mass.mul(ACC_EARTH);
         
         this.lostControl = false;
         
-        this.direction = 0;
-        this.setPosX(0.0);
-        this.setPosY(0.0);
+        this.setPosX(Values.ZERO_LENGTH);
+        this.setPosY(Values.ZERO_LENGTH);
+        this.direction = Values.ZERO_ANGLE;
         reset();
     }
     
     public static Car porsche() {
-        return new Car(1445.0, 365.0, 330.0, 10.0);
+        return new Car(Values.massInKG(1445.0), Values.powerInKW(365.0), Values.speedInKMH(330.0), Values.lengthInM(10.0));
     }
     
     @Override
-    public void set(double time, double posX, double posY, double speed, double propLevel, double brakeLevel) {
+    public void set(TimeDiff time, Length posX, Length posY, Speed speed, double propLevel, double brakeLevel) {
         setTime(time);
         setPosX(posX);
         setPosY(posY);
@@ -198,113 +193,105 @@ public class Car implements ParticleInterface {
     }
     
     public final void reset() {
-        set(0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+        set(Values.ZERO_TIMEDIFF, Values.ZERO_LENGTH, Values.ZERO_LENGTH, Values.ZERO_SPEED, 0.0, 0.0);
     }
     
     //Dynamik
-    public double powerProp() {
-        return propLevel * powerPropMax;  // [W] = [kg * m² / s³]
+    public Power powerProp() {
+        return powerPropMax.mul(propLevel);  // [W] = [kg * m² / s³]
     }
     
-    public double forcePropMax(boolean withTraction) {
+    public Force forcePropMax(boolean withTraction) {
         if(withTraction)
-            return forcePropMax * getTraction();
+            return forcePropMax.mul(getTraction());
         else
             return forcePropMax;
     }
     
-    public double forcePropAbs() {
-        if (speed <= DRIVE_MIN_SPEED && getPropLevel() > ACTIVATION_LEVEL)
+    public Force forcePropAbs() {
+        if (speed.value() <= DRIVE_MIN_SPEED.value())
             return forcePropMax(getASR());                                  // [kg*m / s²]
-        else if (speed > DRIVE_MIN_SPEED)
-            return Math.min(forcePropMax(getASR()), (powerProp() / speed)); // [kg*m / s²]
+        else if (speed.value() >= DRIVE_MIN_SPEED.value())
+            return Values.forceInN(Math.min(forcePropMax(getASR()).value(), (powerProp().div(speed)).value())); // [kg*m / s²]
         else
-            return 0.0;
+            return Values.ZERO_FORCE;
     }
     
-    public double forceProp() {
-        return forcePropAbs() * Math.signum(propLevel); //[kg*m / s²]
+    public Force forceProp() {
+        return forcePropAbs().mul(Math.signum(propLevel)); //[kg*m / s²]
     }
     
-    public double forceDrag() {
-        return dragConst * Math.pow(speed, 2) * Math.signum(-getSpeed()); // [kg*
+    public Force forceDrag() {
+        return getSpeed().forceDrag(speedMax, powerPropMax); // [kg*
     }
     
-    public double forceBrake() {
+    public Force forceBrake() {
         //System.out.println(getBreakLevel());
-        return brakeLevel * forcePropMax(getABS()) *  Math.signum(-getSpeed());
+        return forcePropMax(getABS()).mul(Math.signum(-getSpeed().value()) * brakeLevel);
     }
     
-    public double force() {
-        return forceProp() + forceDrag() + forceBrake(); // [kg*m / s²]
+    public Force force() {
+        return forceProp().add(forceDrag().add(forceBrake())); // [kg*m / s²]
     }
     
     //Kinematik
-    public double acc() {
-        return force() / mass; // [kg / s²]
+    public Acc acc() {
+        return force().div(mass); // [kg / s²]
     }
     
-    public double maxAcc() {
-        return getAccEarth() * getTraction();
+    public Acc maxAcc() {
+        return getAccEarth().mul(getTraction());
     }
     
-    public double curveAcc() {
+    public Acc curveAcc() {
         if(getSteeringLevel() < -ACTIVATION_LEVEL || getSteeringLevel() > ACTIVATION_LEVEL)
-            return (speed * speed) / currentCurveRadius();
+            return Values.curveAcc(speed, currentCurveRadius());
         else
-            return 0.0;
+            return Values.ZERO_ACC;
     }
     
-    public double currentCurveRadius() {
+    public Length currentCurveRadius() {
         if(getSteeringLevel() < -ACTIVATION_LEVEL || getSteeringLevel() > ACTIVATION_LEVEL)
-            return curveRadiusMin / getSteeringLevel();
+            return curveRadiusMin.div(getSteeringLevel());
         else
-            return 9999999.99;
+            return Values.lengthInM(99999999999.9);
     }
     
-    public double deltaDirection(double deltaTime) {
-        if(acc() > 0.1)
-            return (curveAcc() / acc()) * deltaTime / 1000.0; // [rad]
+    public Angle deltaDirection(TimeDiff deltaTime) {
+        if(acc().value() > 0.1)
+            return Values.angleInRad((curveAcc().value() / acc().value()) * deltaTime.div(1000.0).value()); // [rad]
         else
-            return 0.0;
+            return Values.ZERO_ANGLE;
     }
     
-    public double deltaPos(double deltaTime) {
-        return speed * deltaTime; // [m]
+    public Length deltaPos(TimeDiff deltaTime) {
+        return speed.mul(deltaTime); // [m]
     }
     
-    public double deltaPosX(double deltaTime) {
-        return deltaPos(deltaTime) * Math.sin(direction); // [m]
+    public Length deltaPosX(TimeDiff deltaTime) {
+        return deltaPos(deltaTime).mul(Math.sin(direction.value())); // [m]
     }
     
-    public double deltaPosY(double deltaTime) {
-        return deltaPos(deltaTime) * Math.cos(direction); // [m]
+    public Length deltaPosY(TimeDiff deltaTime) {
+        return deltaPos(deltaTime).mul(Math.cos(direction.value())); // [m]
     }
     
     //Methods
     @Override
-    public void step(double deltaTime) {
-        setPosX(getPosX() + deltaPosX(deltaTime));
-        setPosY(getPosY() + deltaPosY(deltaTime));
-        setSpeed(speed + (acc() * deltaTime));
-        setTime(time + deltaTime);
+    public void step(TimeDiff deltaTime) {
+        setPosX(posX.add(deltaPosX(deltaTime)));
+        setPosY(posY.add(deltaPosY(deltaTime)));
+        setSpeed(speed.add(acc().mul(deltaTime)));
+        setTime(time.add(deltaTime));
         
-        direction = (direction + deltaDirection(deltaTime)) % (2*Math.PI);
+        direction = Values.angle((direction.value() + deltaDirection(deltaTime).value()) % (2*Math.PI));
         
-        if(forcePropAbs() > forcePropMax(true) || (forcePropMax(getABS()) * getBrakeLevel()) > forcePropMax(true))
+        if(forcePropAbs().value() >= forcePropMax(true).value() || 
+          (forcePropMax(getABS()).value() * getBrakeLevel()) >= forcePropMax(true).value())
         //if(Math.abs(acc()) + curveAcc() > maxAcc())
             setLostControl(true);  
         else
             setLostControl(false);
-        
-        /*if(lostControl)
-            //currentState = DriveStates.LostControl;
-        if(speed <= DRIVE_MIN_SPEED && getPropLevel() < ACTIVATION_LEVEL) {
-            currentState = DriveStates.Stopp;
-            if (getSteeringLevel() > ACTIVATION_LEVEL || getSteeringLevel() < -ACTIVATION_LEVEL)
-                currentState = DriveStates.DriveCurve;
-        } else if(speed > DRIVE_MIN_SPEED)
-            currentState = DriveStates.Drive; */
     }
     
     @Override
@@ -315,7 +302,7 @@ public class Car implements ParticleInterface {
     public String to_String_EU() {
         DecimalFormat f = new DecimalFormat("#0.00");
         String text =   "Positon: " +  f.format(getPosX()) + "m" +
-                        " Speed: " + f.format(speed * MS_IN_KMH) + " Km/h" +
+                        " Speed: " + f.format(speed) + " Km/h" +
                         " Time: " + f.format(time) + "s" +
                         " Gas Level: " + f.format(propLevel) + " %" +
                         " Brake Level: " + f.format(brakeLevel) + " %";

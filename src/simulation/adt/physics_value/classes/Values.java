@@ -5,22 +5,8 @@
  */
 package simulation.adt.physics_value.classes;
 
-import simulation.adt.admin_value.interfaces.Name;
-import simulation.adt.admin_value.classes.NameImpl;
-import simulation.adt.admin_value.classes.NullLocationImpl;
-import simulation.adt.admin_value.classes.StowageLocationImpl;
-import simulation.adt.admin_value.classes.UniqueIdImpl;
-import simulation.adt.admin_value.interfaces.StowageLocation;
-import simulation.adt.admin_value.interfaces.UniqueId;
+import simulation.adt.physics_value.interfaces.*;
 import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
-import simulation.adt.physics_value.interfaces.Work;
-import simulation.adt.physics_value.interfaces.TimeDiff;
-import simulation.adt.physics_value.interfaces.Power;
-import simulation.adt.physics_value.interfaces.Force;
-import simulation.adt.physics_value.interfaces.Acc;
-import simulation.adt.physics_value.interfaces.Speed;
-import simulation.adt.physics_value.interfaces.Length;
-import simulation.adt.physics_value.interfaces.Mass;
 import simulation.adt.physics_value3d.classes.BoundingBoxImpl;
 import simulation.adt.units.MassUnit;
 
@@ -31,7 +17,8 @@ public final class Values {
     static final double MS_IN_KMH = 3.6;
     static final double KG_IN_G = 1000.0;
     static final double KG_IN_T = 0.001;
-    static final double FEET_IN_METRE = 0.3048;
+    static final double RAD_IN_DEG = 180.0 / Math.PI;
+    static final double FEET_IN_M = 0.3048;
     
     public static final Length ZERO_LENGTH = length(0.0);
     public static final Mass ZERO_MASS = mass(0.0);
@@ -41,6 +28,7 @@ public final class Values {
     public static final Power ZERO_POWER = power(0.0);
     public static final Acc ZERO_ACC = acc(0.0);
     public static final Work ZERO_WORK = work(0.0);
+    public static final Angle ZERO_ANGLE = angle(0.0);
     
     public static final BoundingBox PALLET_BOUNDING_BOX = palletBoundingBox();
     public static final BoundingBox CONTAINER20FT_BOUNDING_BOX = containerBoundingBox();
@@ -51,11 +39,10 @@ public final class Values {
     private Values() {}
     
     //<editor-fold desc="specific calculations / special cases">
-    public static Power dragConst(Power powerPropMax, Speed speedMax) {
-        return power(powerPropMax.value() / Math.pow(speedMax.value(), 3.0)).abs();
-    }
-    public static Force forceDrag(Speed speedMax, Speed currentSpeed, Power dragConst) {
-        return force(dragConst.value() * Math.pow(speedMax.value(), 2.0)).mul(-currentSpeed.signum().value());
+  
+    
+    public static Acc curveAcc(Speed speed, Length currentCurveRadius) {
+        return acc((speed.value() * speed.value()) / (currentCurveRadius.value()));
     }
     //</editor-fold>
     
@@ -73,7 +60,7 @@ public final class Values {
     }
     
     public static Length lengthInFt(double value) {
-        return LengthImpl.valueOf(value * FEET_IN_METRE);
+        return LengthImpl.valueOf(value * FEET_IN_M);
     }
     //</editor-fold>
     // <editor-fold desc="TimeDiff">
@@ -173,6 +160,20 @@ public final class Values {
     
     public static Power powerInKW(double value) {
         return PowerImpl.valueOf(value * KILO);
+    }
+    //</editor-fold>
+    
+    // <editor-fold desc="Angle">
+    public static Angle angle(double value) {
+        return angleInRad(value);
+    }
+    
+    public static Angle angleInDeg(double value) {
+        return AngleImpl.valueOf(value * RAD_IN_DEG);
+    }
+    
+    public static Angle angleInRad(double value) {
+        return AngleImpl.valueOf(value);
     }
     //</editor-fold>
     //<editor-fold desc="BoundingBox - length, width, height">

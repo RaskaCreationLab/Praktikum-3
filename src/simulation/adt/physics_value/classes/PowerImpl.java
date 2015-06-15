@@ -4,6 +4,7 @@ import simulation.adt.physics_value.interfaces.Power;
 import simulation.adt.physics_value.interfaces.TimeDiff;
 import simulation.adt.physics_value.interfaces.Force;
 import simulation.adt.physics_value.interfaces.Work;
+import simulation.adt.physics_value.interfaces.Speed;
 
 class PowerImpl extends AbstractValueImpl<Power> implements Power{
 
@@ -26,11 +27,6 @@ class PowerImpl extends AbstractValueImpl<Power> implements Power{
     }
     
     @Override
-    public Power add(Power other) {
-        return PowerImpl.valueOf(other.value() + this.value());
-    }
-
-    @Override
     public Power mul(double other) {
         return PowerImpl.valueOf(other * this.value());
     }
@@ -48,10 +44,9 @@ class PowerImpl extends AbstractValueImpl<Power> implements Power{
         return ForceImpl.valueOf(this.value() / other.value());
     } 
     
-    @Override
-    public Power sub(Power other) {
-        return this.add(PowerImpl.valueOf(-other.value()));
-    }    
+    public Force div(Speed other) {
+        return ForceImpl.valueOf(this.value() / other.value());
+    }        
     
     @Override
     public String toString() {

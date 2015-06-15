@@ -5,13 +5,15 @@
  */
 package simulation;
 
+import simulation.adt.physics_value.interfaces.*;
+
 public interface ParticleInterface {
-    double getPosX();
-    double getPosY();
+    Length getPosX();
+    Length getPosY();
     double getPropLevel();
     double getBrakeLevel();
     double getSteeringLevel();
-    double getSpeed();
+    Speed getSpeed();
     double getTraction();
     boolean getABS();
     boolean getASR();
@@ -23,10 +25,10 @@ public interface ParticleInterface {
     void setPropLevel(double newPropLevel);
     void setBrakeLevel(double newBrakeLevel);
     void setSteeringLevel(double newSteeringLevel);
-    void set(double newTime, double newPosX, double newPosY, double newSpeed, double newPropLevel, double newBrakeLevel);
+    void set(TimeDiff newTime, Length newPosX, Length newPosY, Speed newSpeed, double newPropLevel, double newBrakeLevel);
     void setLostControl(boolean hasLostControl);
     
-    void step(double aDeltaTime);
+    void step(TimeDiff aDeltaTime);
     
-    public double getDirection();
+    public Angle getDirection();
 }

@@ -25,11 +25,6 @@ public class MassImpl extends AbstractValueImpl<Mass> implements Mass{
     }
     
     @Override
-    public Mass add(Mass other) {
-        return MassImpl.valueOf(other.value() + this.value());
-    }
-    
-    @Override
     public Mass mul (double other) {
         return MassImpl.valueOf(other * this.value());
     }
@@ -42,11 +37,6 @@ public class MassImpl extends AbstractValueImpl<Mass> implements Mass{
     public Mass div(double other) {
         return MassImpl.valueOf(other / this.value);
     }   
-    
-    @Override
-    public Mass sub(Mass other) {
-        return this.add(MassImpl.valueOf(-other.value()));
-    }    
     
     @Override
     public String toString() {

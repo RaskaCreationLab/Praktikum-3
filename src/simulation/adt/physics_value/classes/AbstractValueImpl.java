@@ -8,7 +8,8 @@ abstract class AbstractValueImpl<E extends AbstractValue> implements AbstractVal
     protected AbstractValueImpl(double inValue) {
         this.value = inValue;
     }
-       
+    
+    
     @Override
     public E add(E other) {
         return fromPrototype(value + other.value());
