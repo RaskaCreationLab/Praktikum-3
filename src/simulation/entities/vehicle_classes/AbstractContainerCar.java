@@ -7,6 +7,7 @@ import simulation.adt.admin_value.interfaces.StowageLocation;
 import simulation.adt.admin_value.interfaces.UniqueId;
 import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.classes.Values;
+import simulation.adt.physics_value.interfaces.Length;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.adt.physics_value.interfaces.Power;
 import simulation.adt.physics_value.interfaces.Speed;
@@ -19,6 +20,7 @@ import simulation.stowage.interfaces.ContainerStowage;
 
 
 public abstract class AbstractContainerCar<E extends AbstractContainerVehicle> implements AbstractContainerVehicle<E> {
+    private Length pos;
     private final UniqueId id;
     private final CarEngine engine;
     private final Speed maxSpeed;
@@ -32,6 +34,7 @@ public abstract class AbstractContainerCar<E extends AbstractContainerVehicle> i
 	this.maxSpeed=maxSpeed;
 	this.emptyMass=emptyMass;
         this.bounds = bounds;
+        this.pos = Values.ZERO_LENGTH;
         stowage = StowageEntities.containerStowage(bays, rows, tiers, Values.CONTAINER20FT_BOUNDING_BOX); //gibt mit der BoundingBox noch kein Sinn.
                 
 	reset();
@@ -147,6 +150,11 @@ public abstract class AbstractContainerCar<E extends AbstractContainerVehicle> i
         return elem.loc();
     }   
     //</editor-fold>
+    
+    @Override
+    public Length pos() {
+        return pos;
+    }
     
 		
 }

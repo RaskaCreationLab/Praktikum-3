@@ -30,18 +30,13 @@ public class VanCarrierImpl extends AbstractContainerCar<VanCarrier> implements 
     }
 
     @Override
-    public Length pos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void moveStep(TimeDiff deltaTime) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int compareTo(Vehicle t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.mass().compareTo(t.mass());
     }
 }
 

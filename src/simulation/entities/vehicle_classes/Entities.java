@@ -4,13 +4,12 @@ import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.adt.physics_value.interfaces.Power;
 import simulation.adt.physics_value.interfaces.Speed;
+import simulation.entities.component_interfaces.CarEngine;
 import simulation.entities.component_interfaces.ContainerShip;
 import simulation.entities.component_interfaces.ContainerTruck;
 import simulation.entities.component_interfaces.ShipEngine;
 import simulation.entities.component_interfaces.ShipHull;
 import simulation.entities.component_interfaces.VanCarrier;
-import simulation.stowage.classes.ContainerStowageImpl;
-import simulation.stowage.interfaces.ContainerStowage;
 
 
 public class Entities {
@@ -19,10 +18,10 @@ public class Entities {
 	private Entities(){
 		
 	}
-	public static ContainerTruck countainerTruck(ShipEngine engine, Speed MaxSpeed, Mass emptyMass, BoundingBox bounds){
+	public static ContainerTruck countainerTruck(CarEngine engine, Speed MaxSpeed, Mass emptyMass, BoundingBox bounds){
 		return ContainerTruckImpl.valueOf(engine, MaxSpeed, emptyMass, bounds);	
 	}
-	public static VanCarrier vanCarrierTruck(ShipEngine engine,Speed maxSpeed,Mass emptyMass, BoundingBox bounds){
+	public static VanCarrier vanCarrierTruck(CarEngine engine,Speed maxSpeed,Mass emptyMass, BoundingBox bounds){
 	    return VanCarrierImpl.valueOf(engine, maxSpeed, emptyMass, bounds);
 	}
 	public static ShipEngine shipEngine(BoundingBox boudingBox,Power maxPower){

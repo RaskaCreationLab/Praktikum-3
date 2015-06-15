@@ -25,10 +25,6 @@ public class ContainerTruckImpl extends AbstractContainerCar<ContainerTruck> imp
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public Length pos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void moveStep(TimeDiff deltaTime) {
