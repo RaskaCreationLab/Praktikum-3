@@ -7,16 +7,16 @@ import simulation.adt.physics_value.interfaces.Length;
 import simulation.adt.physics_value.interfaces.Power;
 import simulation.adt.physics_value.interfaces.TimeDiff;
 import simulation.entities.component_interfaces.ContainerTruck;
-import simulation.entities.component_interfaces.ShipEngine;
+import simulation.entities.component_interfaces.CarEngine;
 import simulation.entities.component_interfaces.Vehicle;
 
 public class ContainerTruckImpl extends AbstractContainerCar<ContainerTruck> implements ContainerTruck {
 
-    protected ContainerTruckImpl(ShipEngine engine, Speed maxSpeed, Mass emptyMass, BoundingBox bounds) {
+    protected ContainerTruckImpl(CarEngine engine, Speed maxSpeed, Mass emptyMass, BoundingBox bounds) {
         super(engine, maxSpeed, emptyMass, bounds, 1, 1, 1);
     }
 
-    public static ContainerTruck valueOf(ShipEngine engine, Speed maxSpeed, Mass emptyMass, BoundingBox bounds) {
+    public static ContainerTruck valueOf(CarEngine engine, Speed maxSpeed, Mass emptyMass, BoundingBox bounds) {
 	return new ContainerTruckImpl(engine, maxSpeed, emptyMass, bounds);
     }
 
@@ -27,21 +27,6 @@ public class ContainerTruckImpl extends AbstractContainerCar<ContainerTruck> imp
 
     @Override
     public Length pos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Power power() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Power maxPower() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void setLevel(double level) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

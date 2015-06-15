@@ -6,9 +6,11 @@
 package simulation.stowage.classes;
 
 import simulation.adt.admin_value.interfaces.StowageLocation;
+import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.stowage.interfaces.Bounded3DimStack;
 import simulation.stowage.interfaces.Container;
+import simulation.stowage.interfaces.ContainerStowage;
 import simulation.stowage.interfaces.Pallet;
 
 /**
@@ -44,4 +46,7 @@ public class StowageEntities {
         return PalletImpl.valueOf(mass);
     }
     //</editor-fold>
+    public static ContainerStowage containerStowage(int bays, int rows, int tiers, BoundingBox bounds) {
+        return ContainerStowageImpl.valueOf(bays, rows, tiers, bounds);
+    }
 }

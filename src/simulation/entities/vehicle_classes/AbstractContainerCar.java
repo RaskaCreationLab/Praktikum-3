@@ -8,9 +8,10 @@ import simulation.adt.admin_value.interfaces.UniqueId;
 import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.classes.Values;
 import simulation.adt.physics_value.interfaces.Mass;
+import simulation.adt.physics_value.interfaces.Power;
 import simulation.adt.physics_value.interfaces.Speed;
 import simulation.entities.component_interfaces.AbstractContainerVehicle;
-import simulation.entities.component_interfaces.ShipEngine;
+import simulation.entities.component_interfaces.CarEngine;
 import simulation.stowage.classes.ContainerStowageImpl;
 import simulation.stowage.classes.StowageEntities;
 import simulation.stowage.interfaces.Container;
@@ -19,30 +20,46 @@ import simulation.stowage.interfaces.ContainerStowage;
 
 public abstract class AbstractContainerCar<E extends AbstractContainerVehicle> implements AbstractContainerVehicle<E> {
     private final UniqueId id;
-    private final ShipEngine engine;
+    private final CarEngine engine;
     private final Speed maxSpeed;
     private final Mass emptyMass;
     private final ContainerStowage stowage;
     private final BoundingBox bounds;
     
-    protected  AbstractContainerCar(ShipEngine engine, Speed maxSpeed, Mass emptyMass, BoundingBox bounds, int bays, int rows, int tiers){
+    protected  AbstractContainerCar(CarEngine engine, Speed maxSpeed, Mass emptyMass, BoundingBox bounds, int bays, int rows, int tiers){
         this.id = AdminValues.uniqueID();
 	this.engine=engine;
 	this.maxSpeed=maxSpeed;
 	this.emptyMass=emptyMass;
         this.bounds = bounds;
-        stowage = ContainerStowageImpl.valueOf(bays, rows, tiers, Values.CONTAINER20FT_BOUNDING_BOX); //gibt mit der BoundingBox noch kein Sinn.
+        stowage = StowageEntities.containerStowage(bays, rows, tiers, Values.CONTAINER20FT_BOUNDING_BOX); //gibt mit der BoundingBox noch kein Sinn.
                 
 	reset();
     }
 	
     public abstract void reset();
-         
+    
+//<editor-fold desc="Vehicle">        
     @Override
     public UniqueId id() {
         return id;
     }
-        
+     
+    @Override
+    public Power power() {
+        return engine.power();
+    }
+    
+    @Override
+    public Power maxPower() {
+        return engine.maxPower();
+    }
+    
+    @Override 
+    public void setLevel(double level) {
+        engine.setLevel(level);
+    }
+    
     @Override
     public Mass emptyMass() {
         return emptyMass;
@@ -61,7 +78,13 @@ public abstract class AbstractContainerCar<E extends AbstractContainerVehicle> i
         }
         return mass;
     }
-        
+    
+    @Override
+    public BoundingBox boundingBox() {
+        return bounds;
+    }
+    //</editor-fold>    
+    //<editor-fold desc"stowage">  
     @Override
     public boolean isEmpty() {
         return stowage.isEmpty();
@@ -122,10 +145,7 @@ public abstract class AbstractContainerCar<E extends AbstractContainerVehicle> i
     public StowageLocation locationOf(Container elem) {
         return elem.loc();
     }   
+    //</editor-fold>
     
-    @Override
-    public BoundingBox boundingBox() {
-        return bounds;
-    }
 		
 }

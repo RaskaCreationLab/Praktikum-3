@@ -5,6 +5,9 @@
  */
 package simulation.entities.component_interfaces;
 
+import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
+import simulation.adt.physics_value.interfaces.Mass;
+import simulation.adt.physics_value.interfaces.Power;
 import simulation.entities.aspect_interfaces.Mutable;
 import simulation.entities.aspect_interfaces.WithPower;
 import simulation.entities.aspect_interfaces.WithUniqueId;
