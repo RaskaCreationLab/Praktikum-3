@@ -62,7 +62,8 @@ public abstract class AbstractContainerCar<E extends AbstractContainerVehicle> i
     
     @Override
     public Mass emptyMass() {
-        return emptyMass;
+        return emptyMass; //theoretisch eher - gewicht der Karrosserie + Gewicht der Engine +
+                          //Gewicht aller anderen Teile die im Leergewicht inbegriffen wären.
     }
     
     @Override
