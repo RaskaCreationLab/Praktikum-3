@@ -5,10 +5,8 @@
  */
 package simulation.stowage.classes;
 
-import simulation.adt.admin_value.interfaces.StowageLocation;
 import simulation.adt.phsyics_value3d.interfaces.BoundingBox;
 import simulation.adt.physics_value.interfaces.Mass;
-import simulation.stowage.interfaces.Bounded3DimStack;
 import simulation.stowage.interfaces.Container;
 import simulation.stowage.interfaces.ContainerStowage;
 import simulation.stowage.interfaces.Pallet;
@@ -31,7 +29,7 @@ public class StowageEntities {
     public static Container nullContainer() {
         return NullContainer.valueOf();
     }
-    public static Container container20Ft(StowageLocation loc) {
+    public static Container container20Ft() {
         return ContainerImpl.valueOf();
     }
     public static Container nonContainer() {

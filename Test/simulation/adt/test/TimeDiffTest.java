@@ -3,8 +3,6 @@ package simulation.adt.test;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import simulation.adt.physics_value.interfaces.TimeDiff;
-import simulation.adt.physics_value.interfaces.Acc;
-import simulation.adt.physics_value.interfaces.Force;
 import simulation.adt.physics_value.classes.Values;
 
 public class TimeDiffTest {

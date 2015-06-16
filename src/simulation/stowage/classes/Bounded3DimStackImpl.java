@@ -24,13 +24,13 @@ import simulation.stowage.interfaces.WithForm;
 public class Bounded3DimStackImpl<E extends WithForm> implements Bounded3DimStack<E> {
 
     ArrayList<ArrayList<ArrayList<E>>> stack;
-    final int rows;
     final int bays;
+    final int rows;
     final int tiers;
     
-    private Bounded3DimStackImpl(Class<E> kindOfObjects, int rows, int bays, int tiers) {
-        this.rows = rows;
+    private Bounded3DimStackImpl(Class<E> kindOfObjects, int bays, int rows, int tiers) {
         this.bays  = bays;
+        this.rows = rows;
         this.tiers = tiers;
         try { 
             initialize(kindOfObjects);
@@ -46,11 +46,11 @@ public class Bounded3DimStackImpl<E extends WithForm> implements Bounded3DimStac
     private void initialize(Class<E> kindOfObjects) throws InvalidClassException {
         this.stack = new ArrayList<>();
         
-        for(int i = 0; i != rows; i++) {
+        for(int i = 0; i < bays; i++) {
             this.stack.add(new ArrayList<>());
-                for(int j = 0; j != bays; j++) {
+                for(int j = 0; j < rows; j++) {
                     this.stack.get(i).add(new ArrayList<>());
-                        for(int k = 0; k != tiers; k++) {
+                        for(int k = 0; k < tiers; k++) {
                             this.stack.get(i).get(j).add(getNullObject(kindOfObjects));
                         }
                 }
@@ -94,7 +94,6 @@ public class Bounded3DimStackImpl<E extends WithForm> implements Bounded3DimStac
     @Override
     public boolean tierIsFull(int bay, int row) {
         ArrayList <E> tierList = stack.get(bay).get(row);
-        Collections.reverse(tierList);
         for(E elem : tierList) {
             if(elem.isFree())
                 return false;
@@ -116,7 +115,8 @@ public class Bounded3DimStackImpl<E extends WithForm> implements Bounded3DimStac
     public boolean contains(Object elem) {
         for(ArrayList<ArrayList<E>> rowList : stack) {
             for(ArrayList<E> tierList : rowList) {
-                tierList.contains(elem);
+                if(tierList.contains(elem))
+                    return true;
             }
         }
         return false;

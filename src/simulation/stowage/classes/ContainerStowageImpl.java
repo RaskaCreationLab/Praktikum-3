@@ -39,7 +39,7 @@ public class ContainerStowageImpl implements ContainerStowage{
 
     @Override
     public Mass maxMass() {
-        return Values.FULL_CONTAINER.mul(bays * rows * tiers);
+        return Values.MASS_MAX_CONTAINER.mul(bays * rows * tiers);
     }
     
     @Override

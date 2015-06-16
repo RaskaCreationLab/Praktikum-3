@@ -101,7 +101,7 @@ public class ContainerImpl implements Container{
 
     @Override
     public boolean containsAll(Collection<? extends Pallet> coll) {
-        return palletStowage.contains(coll);
+        return palletStowage.containsAll(coll);
     }
     
     @Override
@@ -155,6 +155,7 @@ public class ContainerImpl implements Container{
         return this.mass().compareTo(t.mass());
     }
     
+    @Override
     public BoundingBox boundingBox() {
         return Values.CONTAINER20FT_BOUNDING_BOX;
     }

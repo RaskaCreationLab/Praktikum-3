@@ -43,6 +43,7 @@ public class WorkTest {
     @Test
     public void testDiv() {
         assertEquals(power,work5.div(timediff));
+        assertEquals(work4,work5.div(2.0));
     }
     
     @Test 

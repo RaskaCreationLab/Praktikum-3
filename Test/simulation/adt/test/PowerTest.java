@@ -6,6 +6,7 @@ import simulation.adt.physics_value.interfaces.Power;
 import simulation.adt.physics_value.interfaces.TimeDiff;
 import simulation.adt.physics_value.interfaces.Force;
 import simulation.adt.physics_value.interfaces.Work;
+import simulation.adt.physics_value.interfaces.Speed;
 import simulation.adt.physics_value.classes.Values;
 
 public class PowerTest {
@@ -17,9 +18,8 @@ public class PowerTest {
     Power power5 = Values.powerInW(20.0);
     
     Force force = Values.forceInN(4.0);
-    
-    TimeDiff timediff = Values.timeDiffInSec(5.0);
-    
+    Speed speed = Values.speedInMS(2.5);
+    TimeDiff timediff = Values.timeDiffInSec(5.0);    
     Work work = Values.workInJ(10.0);
     
     String string = "20.0W";
@@ -48,6 +48,7 @@ public class PowerTest {
     @Test
     public void testDiv() {
         assertEquals(force,power5.div(timediff));
+        assertEquals(force,power4.div(speed));
     }
     
     @Test 

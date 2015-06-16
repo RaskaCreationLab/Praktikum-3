@@ -3,24 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/entities/aspect_interfaces/WithSteering.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/adt/physics_value/interfaces/Length.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/adt/physics_value/interfaces/Angle.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/stowage/classes/ContainerStowageImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/adt/physics_value/classes/AccImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/adt/physics_value/interfaces/Acc.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/entities/vehicle_classes/VanCarrierImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/entities/component_interfaces/VanCarrier.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/adt/physics_value/classes/AngleImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/entities/vehicle_classes/AbstractContainerCar.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/entities/component_interfaces/ContainerTruck.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/entities/vehicle_classes/Entities.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/ParticleInterface.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/GameObject.java</file>
+            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/stowage/classes/Bounded3DimStackImpl.java</file>
+            <file>file:/D:/Projekte/GitHub/Praktikum-3/Test/simulation/stowage/test/ContainerTest.java</file>
             <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/stowage/classes/ContainerImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/Car.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/entities/vehicle_classes/ContainerTruckImpl.java</file>
-            <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/adt/physics_value/interfaces/Speed.java</file>
             <file>file:/D:/Projekte/GitHub/Praktikum-3/src/simulation/adt/physics_value/classes/Values.java</file>
         </group>
     </open-files>

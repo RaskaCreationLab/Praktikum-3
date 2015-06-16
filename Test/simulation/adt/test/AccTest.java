@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import simulation.adt.physics_value.interfaces.Mass;
 import simulation.adt.physics_value.interfaces.Acc;
 import simulation.adt.physics_value.interfaces.Force;
+import simulation.adt.physics_value.interfaces.Speed;
+import simulation.adt.physics_value.interfaces.TimeDiff;
 import simulation.adt.physics_value.classes.Values;
 
 public class AccTest {
@@ -16,6 +18,8 @@ public class AccTest {
     
     Force force = Values.forceInN(10.0);
     Mass mass = Values.massInKG(1.0);
+    Speed speed = Values.speedInKMH(648.0);
+    TimeDiff timediff = Values.timeDiffInMin(0.3);
     
     String string = "10.0m/s²";
     
@@ -35,6 +39,7 @@ public class AccTest {
     public void testMul() {
         assertEquals(acc4,acc.mul(2.0));
         assertEquals(acc1,acc4.mul(0.0));
+        assertEquals(speed,acc.mul(timediff));
     }
     
     @Test
